@@ -19,7 +19,7 @@ class WikiTrends:
 
     def get_hits(self, format='list'):
         word_dict = self.get_dict(self.article)             # Returns DICT with strings (key) and number of occurence (value)
-        filter = self.get_banned_words(self.article)    # Words that we will filter from the top results
+        filter = self.get_banned_words(self.article)    # Words that we will be filtered from the top results
 
         for word in word_dict.keys():
             if word_dict[word] > 1 and word not in filter:
@@ -37,7 +37,6 @@ class WikiTrends:
 
     def get_dict(self, article):
         article = wikipedia.page(article).content
-        #article = 'armenia, and armenia were going to were armenia is not for many times were his lover and armenia were armenia but right now whats happening no one knows armenia and we are not going to do that and tell you about armenia we were not in armenia'
         clean_article = self.get_clean_text(article).split()
         word_counts = self.get_stats(clean_article)
         return word_counts
@@ -65,7 +64,7 @@ class WikiTrends:
         return count
 
     def get_banned_words(self, article):
-        return [self.article.lower(), 'with', 'from', 'also', 'which', 'under', 'that', 'were', 'between', 'their', 'first', 'been', 'other', 'this', 'born', 'many', 'most', 'large', 'have', 'they', 'than', 'more', 'such', 'largest', 'there', 'into', 'such', 'after', 'over', 'often']
+        return [self.article.lower(), 'with', 'from', 'also', 'which', 'under', 'that', 'were', 'between', 'their', 'first', 'been', 'other', 'this', 'born', 'many', 'most', 'large', 'have', 'they', 'than', 'more', 'such', 'largest', 'there', 'into', 'such', 'after', 'over', 'often', 'called', 'these', 'some', 'used', 'when', 'word', 'term']
 
 if __name__ == "__main__":
     armenia = WikiTrends('Armenia', 10)
